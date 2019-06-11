@@ -1,0 +1,3 @@
+- Install tesseract-ocr -> sudo apt-get install tesseract-ocr
+# Not required:
+- Install python-opencv -> sudo apt-get install python-opencv
