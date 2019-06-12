@@ -43,7 +43,7 @@ cv2.imwrite(filename, gray)
 '''
 # load the image as a PIL/Pillow image, apply OCR, and then delete
 # the temporary file
-config = "--psm {psm} --oem 1 --tessdata-dir ./training".format(psm=args["psm"])
+config = "--psm {psm} --oem 0 --tessdata-dir ./training".format(psm=args["psm"])
 text = pytesseract.image_to_string(Image.open(args["image"]), config=config, lang="fas+ita")
 # if os.path.isfile(filename):
 # 	os.remove(filename)
