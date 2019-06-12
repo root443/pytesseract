@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="765efbe1-3d89-4adc-8bca-1ac71e7fbb67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tesseract.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tesseract.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/16635.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/16680.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/16698.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ocr.py" beforeDir="false" afterPath="$PROJECT_DIR$/ocr.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ocr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="499">
-              <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+            <state relative-caret-position="274">
+              <caret line="45" column="68" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
               <folding>
                 <element signature="e#153#174#0" expanded="true" />
               </folding>
@@ -32,7 +31,7 @@
         <entry file="file://$USER_HOME$/.virtualenvs/tesseract/lib/python3.6/site-packages/pytesseract/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -58,6 +57,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>cleanup</find>
+      <find>args</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -90,6 +90,11 @@
             <path>
               <item name="tesseract" type="b2602c69:ProjectViewProjectNode" />
               <item name="tesseract" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tesseract" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tesseract" type="462c0819:PsiDirectoryNode" />
+              <item name="training" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -152,12 +157,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1560253524703</updated>
-      <workItem from="1560253525893" duration="11328000" />
+      <workItem from="1560253525893" duration="12328000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11328000" />
+    <option name="totallyTimeSpent" value="12328000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1373" height="785" extended-state="6" />
@@ -226,7 +231,7 @@
     <entry file="file://$USER_HOME$/.virtualenvs/tesseract/lib/python3.6/site-packages/pytesseract/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -237,10 +242,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/training/fas.traineddata">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/ocr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+        <state relative-caret-position="274">
+          <caret line="45" column="68" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
           <folding>
             <element signature="e#153#174#0" expanded="true" />
           </folding>
