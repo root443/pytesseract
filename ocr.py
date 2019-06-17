@@ -19,6 +19,8 @@ if __name__ == "__main__":
     ap.add_argument("-p", "--preprocess", type=str, default="thresh", help="type of preprocessing to be done")
     ap.add_argument("--psm", type=str, default=1, help="page segmentation mode")
     ap.add_argument("-o", "--out-name", type=str, default=None, help="file name")
+    ap.add_argument("-sb", "--show-boxes", type=str, default=None, help="Show boxes")
+    ap.add_argument("-sd", "--show-data", type=str, default=None, help="Show data")
 
     args = vars(ap.parse_args())
 
@@ -34,8 +36,19 @@ if __name__ == "__main__":
             writing(args["out_name"], text)
         else:
             print(text)
-        #boxes = pytesseract.image_to_boxes(img, config="--oam {oam}".format(oam=OAM), lang=LANG)
-    #dataframe = charframe(boxes)
-    #text = "‎&b—dast, acqua per lavare le‏ أبدس\n‎mani; abluzione rituale f.‏ \n&b—dastîn, brocca per acqua f.‏ ابدستان"
-    #text = "".join(dataframe.framestring[:10])
+
+        if args["show_boxes"]:
+            boxes = pytesseract.image_to_boxes(img, config="--oam {oam}".format(oam=OAM), lang=LANG)
+            dataframe = charframe(boxes)
+            text = dataframe.framestring
+            print(text)
+
+        if args["show_data"]:
+            data = pytesseract.image_to_data(img, config=CONFIG_TESSERACT, lang=LANG)
+            print(data)
+
+
+
+
+
 

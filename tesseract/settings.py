@@ -1,10 +1,10 @@
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FOLDER_OUT = os.path.join(BASE_DIR, "./output/")
+FOLDER_OUT = os.path.join(BASE_DIR, "./output/local/")
 TRAINING_DIR = os.path.join(BASE_DIR, "training/")
 OAM = 1
-LANG = "ita+fas+ara+osd"
+LANG = "osd+ita+fas+ara"
 
 ADDITIONAL_CONFIG_TESSERACT = " ".join([
     "--preserve_interword_spaces 1",
