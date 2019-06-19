@@ -5,14 +5,22 @@ from io import StringIO
 class charframe:
     separator = " "
 
-    def __init__(self, content):
-        self._dataframe = pd.read_csv(StringIO(content), header=None, sep=self.separator)
-        self._framestring = ""
+    def __init__(self, content, header=False):
+        if header:
+            self._dataframe = pd.read_csv(StringIO(content), sep=self.separator)
+        else:
+            self._dataframe = pd.read_csv(StringIO(content), header=None, sep=self.separator)
+        self._frame = self._dataframe.loc
+
+
 
     @property
     def dataframe(self):
-         return self._dataframe
+        return self._dataframe
+
+    def frame_from_col(self, column=0):
+        return self._dataframe.loc[:, column].tolist()
 
     @property
-    def framestring(self):
-        return self._dataframe.loc[:, 0].tolist()
+    def frame(self):
+        return self._frame[:]

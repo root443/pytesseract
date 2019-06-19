@@ -21,6 +21,7 @@ if __name__ == "__main__":
     ap.add_argument("-o", "--out-name", type=str, default=None, help="file name")
     ap.add_argument("-sb", "--show-boxes", type=str, default=None, help="Show boxes")
     ap.add_argument("-sd", "--show-data", type=str, default=None, help="Show data")
+    ap.add_argument("-sbf", "--show-boxes-frame", type=str, default=None, help="Show boxes frame")
 
     args = vars(ap.parse_args())
 
@@ -40,12 +41,17 @@ if __name__ == "__main__":
         if args["show_boxes"]:
             boxes = pytesseract.image_to_boxes(img, config="--oam {oam}".format(oam=OAM), lang=LANG)
             dataframe = charframe(boxes)
-            text = dataframe.framestring
-            print(text)
+            print(dataframe.frame_from_col())
 
         if args["show_data"]:
             data = pytesseract.image_to_data(img, config=CONFIG_TESSERACT, lang=LANG)
-            print(data)
+            dataframe = charframe(data, header=True)
+            print(dataframe.dataframe)
+
+        if args["show_boxes_frame"]:
+            data = pytesseract.image_to_boxes(img, config="--oam {oam}".format(oam=OAM), lang=LANG)
+            dataframe = charframe(data)
+            print(dataframe.frame)
 
 
 
