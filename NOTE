@@ -1,8 +1,22 @@
 Configure parameters Tesseract: https://ai-facets.org/tesseract-ocr-best-practices/
 Tesseract data: https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
 
-Quick intro to Machine Learning: http:/ /www-dimat.unipv.it/gualandi/programmazione2/QL_ML.pdf
+Quick intro to Machine Learning: http://www-dimat.unipv.it/gualandi/programmazione2/QL_ML.pdf
 OSD: https://static.googleusercontent.com/media/research.google.com/it//pubs/archive/35506.pdf
+
+Training tesseract model from scratch:
+https://www.endpoint.com/blog/2018/07/09/training-tesseract-models-from-scratch
+
+JTessBoxEditor:
+http://vietocr.sourceforge.net/training.html
+
+JTessBoxEditor2.2.0:
+https://sourceforge.net/projects/vietocr/files/jTessBoxEditor/jTessBoxEditor-2.2.0.zip/download
+
+JTessBoxEditorFX2.2.0:
+https://sourceforge.net/projects/vietocr/files/jTessBoxEditor/jTessBoxEditorFX-2.2.0.zip/download
+
+
 
 Training set compile config:
     "--preserve_interword_spaces 1",
