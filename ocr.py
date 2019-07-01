@@ -9,7 +9,7 @@ import cv2
 
 
 def tesseract(img):
-    config = "--psm {psm} {config}".format(psm=args["psm"], config=CONFIG_TESSERACT)
+    config = "{config}".format(config=CONFIG_TESSERACT)
     return pytesseract.image_to_string(img, config=config, lang=LANG)
 
 

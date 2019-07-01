@@ -1,8 +1,9 @@
 Configure parameters Tesseract: https://ai-facets.org/tesseract-ocr-best-practices/
 Tesseract data: https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
 
-Quick intro to Machine Learning: http:/ /www-dimat.unipv.it/gualandi/programmazione2/QL_ML.pdf
+Quick intro to Machine Learning: http://www-dimat.unipv.it/gualandi/programmazione2/QL_ML.pdf
 OSD: https://static.googleusercontent.com/media/research.google.com/it//pubs/archive/35506.pdf
+
 
 Training reference: https://github.com/tesseract-ocr/tesseract/wiki/TrainingTesseract-4.00
 
@@ -14,6 +15,18 @@ training/lstmtraining --debug_interval 100 \
   --train_listfile ../tesstutorial/engtrain/eng.training_files.txt \
   --eval_listfile ../tesstutorial/engeval/eng.training_files.txt \
   --max_iterations 5000 &>../tesstutorial/engoutput/basetrain.log
+
+Training tesseract model from scratch:
+https://www.endpoint.com/blog/2018/07/09/training-tesseract-models-from-scratch
+
+JTessBoxEditor:
+http://vietocr.sourceforge.net/training.html
+
+JTessBoxEditor2.2.0:
+https://sourceforge.net/projects/vietocr/files/jTessBoxEditor/jTessBoxEditor-2.2.0.zip/download
+
+Lios GUI: Permette di selezionare i box in una immagine e assegnare un label (Carattere)locate
+https://sourceforge.net/projects/lios/files/latest/download
 
 Training set compile config:
     "--preserve_interword_spaces 1",
