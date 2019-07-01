@@ -29,7 +29,7 @@ if __name__ == "__main__":
         files = os.listdir(args["image"])
         for file in files:
             img = Image.open(args["image"] + file)
-            writing(file.replace(".jpg", ".docx"), tesseract(img))
+            writing(file.replace(".tiff", ".docx"), tesseract(img))
     else:
         img = cv2.imread(r'{img}'.format(img=args["image"]))
         text = tesseract(img)

@@ -25,7 +25,6 @@ def writingdocx(filename, content, column=0):
         section = document.sections[0]
         cols = section._sectPr.xpath('./w:cols')[0]
         cols.set(qn('w:num'), column)
-
     document.save('{d}{f}'.format(d=FOLDER_OUT, f=filename))
 
 def writingtxt(filename, content):
