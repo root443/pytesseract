@@ -15,6 +15,7 @@ def binarize_image(workdir, filename):
     plt.imsave(processed_image, threshed)
     return Image.open(processed_image)
 
+
 #
 # if __name__ == "__main__":
 #     ap = argparse.ArgumentParser()
