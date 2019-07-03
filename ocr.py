@@ -1,51 +1,60 @@
-# USAGE
-# python ocr.py --image images/example_01.png 
-# python ocr.py --image images/example_02.png  --preprocess blur
-
-# import the necessary packages
-from PIL import Image
-import pytesseract
 import argparse
+import pytesseract
+from PIL import Image
+from datetime import datetime
+from tesseract.writer.writer import writing
+from tesseract.settings import *
+from tesseract.dataframe.charframe import charframe
 import cv2
-import os
 
-# construct the argument parse and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-i", "--image", required=True,
-	help="path to input image to be OCR'd")
-ap.add_argument("-p", "--preprocess", type=str, default="thresh",
-	help="type of preprocessing to be done")
-args = vars(ap.parse_args())
 
-# load the example image and convert it to grayscale
-image = cv2.imread(args["image"])
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+def tesseract(img):
+    config = "{config}".format(config=CONFIG_TESSERACT)
+    return pytesseract.image_to_string(img, config=config, lang=LANG)
 
-cv2.imshow("Image", gray)
 
-# check to see if we should apply thresholding to preprocess the
-# image
-if args["preprocess"] == "thresh":
-	gray = cv2.threshold(gray, 0, 255,
-		cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-i", "--image", required=True, help="path to input image to be OCR'd")
+    ap.add_argument("-p", "--preprocess", type=str, default="thresh", help="type of preprocessing to be done")
+    ap.add_argument("--psm", type=str, default=1, help="page segmentation mode")
+    ap.add_argument("-o", "--out-name", type=str, default=None, help="file name")
+    ap.add_argument("-sb", "--show-boxes", type=str, default=None, help="Show boxes")
+    ap.add_argument("-sd", "--show-data", type=str, default=None, help="Show data")
+    ap.add_argument("-sbf", "--show-boxes-frame", type=str, default=None, help="Show boxes frame")
 
-# make a check to see if median blurring should be done to remove
-# noise
-elif args["preprocess"] == "blur":
-	gray = cv2.medianBlur(gray, 3)
+    args = vars(ap.parse_args())
 
-# write the grayscale image to disk as a temporary file so we can
-# apply OCR to it
-filename = "{}.png".format(os.getpid())
-cv2.imwrite(filename, gray)
+    if os.path.isdir(args["image"]):
+        files = os.listdir(args["image"])
+        for file in files:
+            img = Image.open(args["image"] + file)
+            writing(file.replace(".tiff", ".docx"), tesseract(img))
+    else:
+        img = cv2.imread(r'{img}'.format(img=args["image"]))
+        text = tesseract(img)
+        if args["out_name"]:
+            writing(args["out_name"], text)
+        else:
+            print(text)
 
-# load the image as a PIL/Pillow image, apply OCR, and then delete
-# the temporary file
-text = pytesseract.image_to_string(Image.open(filename))
-os.remove(filename)
-print(text)
+        if args["show_boxes"]:
+            boxes = pytesseract.image_to_boxes(img, config="--oam {oam}".format(oam=OAM), lang=LANG)
+            dataframe = charframe(boxes)
+            print(dataframe.frame_from_col())
 
-# show the output images
-# cv2.imshow("Image", image)
-cv2.imshow("Output", gray)
-cv2.waitKey(0)
+        if args["show_data"]:
+            data = pytesseract.image_to_data(img, config=CONFIG_TESSERACT, lang=LANG)
+            dataframe = charframe(data, header=True)
+            print(dataframe.dataframe)
+
+        if args["show_boxes_frame"]:
+            data = pytesseract.image_to_boxes(img, config="--oam {oam}".format(oam=OAM), lang=LANG)
+            dataframe = charframe(data)
+            print(dataframe.frame)
+
+
+
+
+
+
