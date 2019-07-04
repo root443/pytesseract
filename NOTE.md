@@ -7,6 +7,9 @@ OSD: https://static.googleusercontent.com/media/research.google.com/it//pubs/arc
 #Training reference Tesseract 4
 Training reference: https://github.com/tesseract-ocr/tesseract/wiki/TrainingTesseract-4.00
 
+#Making box files with tesseract
+https://github.com/tesseract-ocr/tesseract/wiki/TrainingTesseract-4.00#creating-training-data
+
 #Example Training data
 Tesseract data: https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
 
