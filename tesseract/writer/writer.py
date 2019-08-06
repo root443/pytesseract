@@ -1,5 +1,7 @@
 import re
+
 from tesseract.settings import *
+
 
 def writing(filename, text):
     if re.search(r"\.docx", filename):
@@ -10,8 +12,6 @@ def writing(filename, text):
 def writingdocx(filename, content, column=0):
     from docx import Document
     from docx.oxml.ns import qn
-    from docx.enum.style import WD_STYLE_TYPE
-    from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 
     document = Document()
 
