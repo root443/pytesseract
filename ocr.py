@@ -9,6 +9,11 @@ from tesseract.image_processing import binarize_image
 from tesseract.settings import *
 from tesseract.writer.writer import writing
 
+import logging
+
+info_logger = logging.getLogger('info_logger')
+debug_logger = logging.getLogger('debug_logger')
+
 
 def tesseract(img):
     config = "{config}".format(config=CONFIG_TESSERACT)
@@ -28,6 +33,7 @@ def ocr():
     if args["show_boxes"]:
         boxes = pytesseract.image_to_boxes(img, config="--oam {oam}".format(oam=OEM), lang=LANG)
         dataframe = charframe(boxes)
+
         print(dataframe.frame_from_col())
 
     if args["show_data"]:

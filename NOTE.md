@@ -57,3 +57,8 @@ https://github.com/zdenop/qt-box-editor
 
 # Training boxes 
 https://pretius.com/how-to-prepare-training-files-for-tesseract-ocr-and-improve-characters-recognition/
+
+# Command training
+- mftraining: https://github.com/tesseract-ocr/tesseract/wiki/Training-Tesseract-3.03%E2%80%933.05#mftraining
+- cntraining: https://github.com/tesseract-ocr/tesseract/blob/master/doc/cntraining.1.asc
+- combine_tessdata: https://github.com/tesseract-ocr/tesseract/blob/master/doc/combine_tessdata.1.asc
