@@ -1,35 +1,35 @@
-#Overview Machine learning
+# Overview Machine learning
 Quick intro to Machine Learning: http://www-dimat.unipv.it/gualandi/programmazione2/QL_ML.pdf
 
-#Overview OSD
+# Overview OSD
 OSD: https://static.googleusercontent.com/media/research.google.com/it//pubs/archive/35506.pdf
 
-#Training reference Tesseract 4
+# Training reference Tesseract 4
 Training reference: https://github.com/tesseract-ocr/tesseract/wiki/TrainingTesseract-4.00
 
-#Making box files with tesseract
+# Making box files with tesseract
 https://github.com/tesseract-ocr/tesseract/wiki/TrainingTesseract-4.00#creating-training-data
 
-#Example Training data
+# Example Training data
 Tesseract data: https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
 
-#Training tesseract model from scratch
+# Training tesseract model from scratch
 https://www.endpoint.com/blog/2018/07/09/training-tesseract-models-from-scratch
 
-#JTessBoxEditor:
+# JTessBoxEditor:
 http://vietocr.sourceforge.net/training.html
 
-#JTessBoxEditor2.2.0:
+# JTessBoxEditor2.2.0:
 https://sourceforge.net/projects/vietocr/files/jTessBoxEditor/jTessBoxEditor-2.2.0.zip/download
 
-#Lios GUI: Permette di selezionare i box in una immagine e assegnare un label (Carattere)locate
+# Lios GUI: Permette di selezionare i box in una immagine e assegnare un label (Carattere)locate
 https://sourceforge.net/projects/lios/files/latest/download
 
-#Configure training
+# Configure training
 Configure parameters Tesseract: https://ai-facets.org/tesseract-ocr-best-practices/
 
 
-#Example Configuration training
+# Example Configuration training
 mkdir -p ../tesstutorial/engoutput
 training/lstmtraining --debug_interval 100 \
   --traineddata ../tesstutorial/engtrain/eng/eng.traineddata \
@@ -39,7 +39,7 @@ training/lstmtraining --debug_interval 100 \
   --eval_listfile ../tesstutorial/engeval/eng.training_files.txt \
   --max_iterations 5000 &>../tesstutorial/engoutput/basetrain.log
 
-#Training set compile config:
+# Training set compile config:
     "--preserve_interword_spaces 1",
     "--noextract_font_properties 1",
     "--tessedit_word_for_word 1",
@@ -52,3 +52,8 @@ training/lstmtraining --debug_interval 100 \
     "--tosp_only_small_gaps_for_kern T",
     "--tosp_use_pre_chopping T"
 
+# qt edit box
+https://github.com/zdenop/qt-box-editor
+
+# Training boxes 
+https://pretius.com/how-to-prepare-training-files-for-tesseract-ocr-and-improve-characters-recognition/
