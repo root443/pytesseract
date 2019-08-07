@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from PIL import Image
 
-
+#TODO Ridisegnare lo script come una classe o un interfaccia
 def binarize_image(img, thres=150, maxval=255):
     img_name = img.split("/")[-1]
     workdir = img.split("/")[:-1]

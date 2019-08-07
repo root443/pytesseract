@@ -14,6 +14,7 @@ import logging
 info_logger = logging.getLogger('info_logger')
 debug_logger = logging.getLogger('debug_logger')
 
+#TODO definire un formalismo per questo file di script
 
 def tesseract(img):
     config = "{config}".format(config=CONFIG_TESSERACT)
