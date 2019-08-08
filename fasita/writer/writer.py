@@ -1,5 +1,5 @@
 import re
-from tesseract.settings import *
+from fasita.settings import *
 
 def writing(filename, text):
     if re.search(r"\.docx", filename):

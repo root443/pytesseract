@@ -1,26 +1,27 @@
 import argparse
+
+import cv2
 import pytesseract
 from PIL import Image
-from datetime import datetime
-from tesseract.writer.writer import writing
-from tesseract.settings import *
-from tesseract.dataframe.charframe import charframe
-import cv2
+from fasita.dataframe.charframe import charframe
+from fasita.settings import *
+from fasita.writer.writer import writing
+
 
 def tesseract(img):
     config = "{config}".format(config=CONFIG_TESSERACT)
     return pytesseract.image_to_string(img, config=config, lang=LANG)
 
 
-if __name__ == "__main__":
+def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("-i", "--image", required=True, help="path to input image to be OCR'd")
     ap.add_argument("-p", "--preprocess", type=str, default="thresh", help="type of preprocessing to be done")
     ap.add_argument("--psm", type=str, default=1, help="page segmentation mode")
-    ap.add_argument("-o", "--out-name", type=str, default=None, help="path to output text file")
-    ap.add_argument("-sb", "--show-boxes", type=str, default=None, help="Show boxes")
-    ap.add_argument("-sd", "--show-data", type=str, default=None, help="Show data")
-    ap.add_argument("-sbf", "--show-boxes-frame", type=str, default=None, help="Show boxes frame")
+    ap.add_argument("-o", "--output", type=str, default=None, help="path to output text file")
+    ap.add_argument("-b", "--show-boxes", type=str, default=None, help="Show boxes")
+    ap.add_argument("-d", "--show-data", type=str, default=None, help="Show data")
+    ap.add_argument("-f", "--show-boxes-frame", type=str, default=None, help="Show boxes frame")
 
     args = vars(ap.parse_args())
 

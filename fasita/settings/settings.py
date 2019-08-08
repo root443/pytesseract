@@ -1,9 +1,9 @@
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FOLDER_OUT = os.path.join(BASE_DIR, "..output/local/")
-TRAINING_DIR = os.path.join(BASE_DIR, "../training/")
-TRAINING_BOXES_DIR = os.path  .join(BASE_DIR, "../training/boxes/")
+FOLDER_OUT = os.path.join(BASE_DIR, "../output/local/")
+TRAINING_DIR = os.path.join(BASE_DIR, "data/trained/")
+TRAINING_BOXES_DIR = os.path.join(BASE_DIR, "data/boxes/")
 OEM = 1
 PSM = 1
 LANG = "ita+fas+ara"
