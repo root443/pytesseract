@@ -13,4 +13,4 @@ def binarize_image(workdir, filename):
     plt.imshow(threshed)
     processed_image = workdir + "processed-%s" % filename
     plt.imsave(processed_image, threshed)
-    return Image.open(processed_image)
+    return processed_image

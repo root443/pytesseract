@@ -24,7 +24,7 @@ setup(
         'console_scripts': [
             'fasita = fasita.ocr:main',
             'fasita-makeboxes = fasita.makeboxes:main',
-            'fasita-test = fasita.settings.test:main'
+            'fasita-test = fasita.test:main'
         ]
     },
     include_package_data=True,
