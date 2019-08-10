@@ -6,6 +6,7 @@ from pytesseract import pytesseract
 
 from fasita.image_processing import binarize_image
 from fasita.settings import CONFIG_TESSERACT, LANG, BOXES_DIR
+# TODO No module named 'fasita' if runned as main.
 
 
 def makeboxes(image, args):

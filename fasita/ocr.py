@@ -6,7 +6,7 @@ from PIL import Image
 from fasita.dataframe.charframe import charframe
 from fasita.settings import *
 from fasita.writer.writer import writing
-
+# TODO No module named 'fasita' if runned as main.
 
 def tesseract(img):
     config = "{config}".format(config=CONFIG_TESSERACT)
