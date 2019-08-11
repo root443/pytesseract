@@ -1,5 +1,6 @@
 import argparse
 import re
+import sys
 
 import cv2
 import pytesseract
@@ -12,7 +13,7 @@ def tesseract(img):
     config = "{config}".format(config=CONFIG_TESSERACT)
     return pytesseract.image_to_string(img, config=config, lang=LANG)
 
-def main():
+def ocr():
     ap = argparse.ArgumentParser()
     ap.add_argument("-i", "--image", required=True, help="path to input image to be OCR'd")
     ap.add_argument("-p", "--preprocess", type=str, default="thresh", help="type of preprocessing to be done")
@@ -57,5 +58,3 @@ def main():
             data = pytesseract.image_to_boxes(img, config="--oam {oam}".format(oam=OEM), lang=LANG)
             dataframe = charframe(data)
             print(dataframe.frame)
-
-main()

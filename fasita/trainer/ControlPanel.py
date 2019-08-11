@@ -8,7 +8,6 @@ debug_logger = logging.getLogger('debug_logger')
 error_logger = logging.getLogger('error_logger')
 
 class traineddata(object):
-    #TODO Rinominare il file in modo appropriato
     _input_dir = "training"
     _font_properties = ["ocrb", 1, 0, 0, 0, 0]
     CMD = {
