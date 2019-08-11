@@ -130,6 +130,7 @@ dmypy.json
 #Ide
 .idea
 
-*/tmp
+tmp
+*.log
 *.tmp
 *.pid

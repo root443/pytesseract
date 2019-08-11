@@ -32,3 +32,5 @@ errorLogHandler.setFormatter(formatter)
 
 logger.addHandler(logHandler)
 logger.addHandler(errorLogHandler)
+
+COMMANDS = ['ocr', 'makebox', 'help']
