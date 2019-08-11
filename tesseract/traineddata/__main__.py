@@ -10,9 +10,11 @@ error_logger = logging.getLogger('error_logger')
 class traineddata(object):
     #TODO Rinominare il file in modo appropriato
     _input_dir = "training"
+    _font_properties = ["ocrb", 1, 0, 0, 0, 0]
     CMD = {
-            'tesseract': ['tesseract', 'nobatch', 'box.train'],
-            "unicharset": ['unicharset_extractor',],
+            'training_box': ['tesseract', 'nobatch', 'box.train'],
+            "unicharset_extractor": ['unicharset_extractor',],
+            "write_font_properties": [],
             'character': ['mftraining',],
             'normproto': ['cntraining',],
             'tessdata': ['combine_tessdata',]
@@ -22,9 +24,27 @@ class traineddata(object):
     def input_dir(self):
         return self._input_dir
 
-    def __init__(self, input_dir):
+    @property
+    def font_properties(self):
+        return self._font_properties
+
+    @font_properties.setter
+    def font_properties(self, font_properties):
+        """
+        default is:
+            myfont      0    0      0        0      0
+            fontname italic bold monospace serif fraktur
+        :param font_properties: list of params for fonts
+        :return: void
+        """
+        self._font_properties = font_properties
+
+    def __init__(self, input_dir, **kwargs):
         self.input_dir = input_dir
         self.files = os.listdir(os.path.join(BASE_DIR, self.input_dir))
+        if "font_properties" in kwargs:
+            self.font_properties = kwargs["font_properties"]
+
     #TODO Utilizzare process_img anzichè OpenCV
     def _get_imgs_boxes(self):
         """
@@ -41,6 +61,7 @@ class traineddata(object):
 
             except Exception as e:
                 print(e)
+
     def _wrap(self, command):
         process_out = subprocess.Popen(command,
                                  stdout=subprocess.PIPE,
@@ -51,14 +72,18 @@ class traineddata(object):
 
     def training_box(self, input_file):
         for img in input_file:
-            command = self.CMD["tesseract"][:]
+            command = self.CMD[__name__][:]
             command[1:2] = [img, os.path.splitext(img)[0]]
             debug_logger.debug(command)
             self._wrap(command)
 
     def unicharset_extractor(self, input_file):
         for box in input_file:
-            command = self.CMD["unicharset"][:]
-            command[1:1] = ["%s.box" % box]
+            command = self.CMD[__name__][:]
+            command[1:1] = ["{dir}{box}.box".format(box=box, dir=self.input_dir)]
             debug_logger.debug(command)
             self._wrap(command)
+
+    def write_font_properties(self):
+        with open("%sfont_properties" % self.input_dir, "w") as f:
+            f.write(" ".join(self.font_properties))
