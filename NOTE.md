@@ -58,6 +58,21 @@ https://github.com/zdenop/qt-box-editor
 # Training boxes 
 https://pretius.com/how-to-prepare-training-files-for-tesseract-ocr-and-improve-characters-recognition/
 
+`tesseract transcript.tiff transcript batch.nochop makebox`
+### After corrections
+`tesseract transcript.tiff transcript nobatch box.train`
+`unicharset_extractor transcript.box`
+`echo "times 0 0 0 1 0" > font_properties`
+`mftraining -F font_properties -U unicharset -O transcript.unicharset transcript.tr`
+`mftraining -F font_properties -U unicharset -O transcript.unicharset transcript.tr`
+`cntraining transcript.tr`
+`
+    mv inttemp transcript.inttemp
+    mv normproto transcript.normproto
+    mv pffmtable transcript.pffmtable
+    mv shapetable transcript.shapetable
+`
+`combine_tessdata transcript.`
 # Command training
 - mftraining: https://github.com/tesseract-ocr/tesseract/wiki/Training-Tesseract-3.03%E2%80%933.05#mftraining
 - cntraining: https://github.com/tesseract-ocr/tesseract/blob/master/doc/cntraining.1.asc
