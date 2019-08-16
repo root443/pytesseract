@@ -1,15 +1,18 @@
 import os, cv2
-from fasita.settings import BASE_DIR
+from pathlib import Path
+
+import pytesseract
+from PIL import Image
+
+from fasita.settings import CONFIG_TESSERACT, LANG
 import subprocess
 import logging
 
-info_logger = logging.getLogger('info_logger')
-debug_logger = logging.getLogger('debug_logger')
-error_logger = logging.getLogger('error_logger')
+logger = logging.getLogger('fasita')
 
-class traineddata(object):
-    _input_dir = "training"
+class Instructor(object):
     _font_properties = ["ocrb", 1, 0, 0, 0, 0]
+    _input_dir = os.path.abspath('data/training/alfa')
     CMD = {
             'training_box': ['tesseract', 'nobatch', 'box.train'],
             "unicharset_extractor": ['unicharset_extractor',],
@@ -39,10 +42,21 @@ class traineddata(object):
         self._font_properties = font_properties
 
     def __init__(self, input_dir, **kwargs):
-        self.input_dir = input_dir
-        self.files = os.listdir(os.path.join(BASE_DIR, self.input_dir))
+        self._input_dir = Path(input_dir)
+        self.files = [file.name for file in os.scandir(self.input_dir) if file.is_file()]
+        self.package = self.input_dir.parts[-1]
         if "font_properties" in kwargs:
             self.font_properties = kwargs["font_properties"]
+
+    def makeboxes(self, pattern):
+        logger.info(__name__)
+        logger.debug(self.input_dir.glob(pattern))
+        for img in self.input_dir.glob(pattern):
+            if img.is_file():
+                boxes = pytesseract.image_to_boxes(Image.open(img))
+                filename, _ = os.path.splitext(img)
+                with open(filename + ".box", "w+") as boxfile:
+                    boxfile.write(boxes)
 
     #TODO Utilizzare process_img anzichè OpenCV
     def _get_imgs_boxes(self):
@@ -66,21 +80,21 @@ class traineddata(object):
                                  stdout=subprocess.PIPE,
                                  stderr=subprocess.STDOUT)
         stdout, stderr = process_out.communicate()
-        info_logger.info(stdout)
-        error_logger.error(stderr)
+        logger.info(stdout)
+        logger.error(stderr)
 
     def training_box(self, input_file):
         for img in input_file:
             command = self.CMD[__name__][:]
             command[1:2] = [img, os.path.splitext(img)[0]]
-            debug_logger.debug(command)
+            logger.info(command)
             self._wrap(command)
 
     def unicharset_extractor(self, input_file):
         for box in input_file:
             command = self.CMD[__name__][:]
             command[1:1] = ["{dir}{box}.box".format(box=box, dir=self.input_dir)]
-            debug_logger.debug(command)
+            logger.info(command)
             self._wrap(command)
 
     def write_font_properties(self):
