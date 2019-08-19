@@ -35,4 +35,4 @@ errorLogHandler.setFormatter(formatter)
 logger.addHandler(logHandler)
 logger.addHandler(errorLogHandler)
 
-COMMANDS = ['ocr', 'makeboxes', 'help']
+COMMANDS = ['ocr', 'makeboxes', 'batchtraining', 'help']

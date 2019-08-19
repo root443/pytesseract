@@ -1,7 +1,7 @@
 import argparse
 import logging
 import os
-from .training.Instructor import Instructor
+from .training.instructor import Instructor
 from PIL import Image
 
 logger = logging.getLogger('fasita')
