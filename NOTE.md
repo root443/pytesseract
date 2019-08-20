@@ -77,3 +77,11 @@ https://pretius.com/how-to-prepare-training-files-for-tesseract-ocr-and-improve-
 - mftraining: https://github.com/tesseract-ocr/tesseract/wiki/Training-Tesseract-3.03%E2%80%933.05#mftraining
 - cntraining: https://github.com/tesseract-ocr/tesseract/blob/master/doc/cntraining.1.asc
 - combine_tessdata: https://github.com/tesseract-ocr/tesseract/blob/master/doc/combine_tessdata.1.asc
+
+# Training v4
+https://medium.com/@vovaprivalov/tesseract-ocr-tips-custom-dictionary-to-improve-ocr-d2b9cd17850b
+### other info
+https://medium.com/saarthi-ai/how-to-build-your-own-ocr-a5bb91b622ba
+
+## Official training v4
+https://github.com/tesseract-ocr/tesseract/wiki/TrainingTesseract-4.00
